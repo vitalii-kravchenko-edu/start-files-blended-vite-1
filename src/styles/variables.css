@@ -4,6 +4,8 @@
   --color-gray: #9e9e9e;
   --color-light: #f2f2f2;
   --color-dark: #212121;
+  --color-red: #ff0000;
+  --color-lightBlue: #87cefa;
   --color-mainBackground: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
   --color-tagBackground: linear-gradient(to bottom, #ffd194, #d1913c);
   --color-accent: #2196f3;
