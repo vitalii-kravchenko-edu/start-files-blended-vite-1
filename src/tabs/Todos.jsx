@@ -24,12 +24,27 @@ export const Todos = () => {
       return [...prevState, todo];
     });
   };
+
+  const handleEdit = (id, newText) => {
+    setTodos(prevState =>
+      prevState.map(item => {
+        if (item.id === id) {
+          return {
+            ...item,
+            text: newText,
+          };
+        } else {
+          return item;
+        }
+      }),
+    );
+  };
   return (
     <div>
       {' '}
       <Form onSubmit={handleSubmit}></Form>
       <Text textAlign="center">There are no any todos ...</Text>
-      <TodoList todos={todos} onDelete={handleDelete} />
+      <TodoList todos={todos} onDelete={handleDelete} onEdit={handleEdit} />
     </div>
   );
 };
