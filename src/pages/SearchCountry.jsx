@@ -1,21 +1,25 @@
 import { Container, Section, SearchForm, CountryList } from 'components';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { fetchByRegion } from 'service/countryApi';
 
 export const SearchCountry = () => {
-  const [region, setRegion] = useState(null);
   const [regionCountries, setregionCountries] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const regionParams = searchParams.get('region');
   useEffect(() => {
-    if (!region) return;
+    if (!regionParams) return;
     (async () => {
-      const regionCountries = await fetchByRegion(region);
+      const regionCountries = await fetchByRegion(regionParams);
 
       setregionCountries(regionCountries);
     })();
-  }, [region]);
+  }, [regionParams]);
 
   const onSubmitForm = value => {
-    setRegion(value);
+    setSearchParams({
+      region: value,
+    });
   };
   return (
     <Section>
