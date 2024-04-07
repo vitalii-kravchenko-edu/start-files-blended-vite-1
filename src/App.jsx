@@ -1,4 +1,5 @@
 import { Header, Loader } from 'components';
+import { SearchCountry } from 'pages/SearchCountry';
 import { Suspense, lazy } from 'react';
 
 import { Routes, Route } from 'react-router-dom';
@@ -13,6 +14,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/country/:countryId" element={<Country />}></Route>
+          <Route path="/country" element={<SearchCountry />}></Route>
         </Routes>
       </Suspense>
     </div>
