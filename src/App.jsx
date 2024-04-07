@@ -1,27 +1,19 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import { Section, Container } from 'components';
-import { Photos } from 'tabs/Photos';
-import { Todos } from 'tabs/Todos';
+import { Header, Loader } from 'components';
+import { Suspense, lazy } from 'react';
+
+import { Routes, Route } from 'react-router-dom';
+const Home = lazy(() => import('./pages/Home'));
 
 export const App = () => {
   return (
-    <Section>
-      <Container>
-        <Tabs>
-          <TabList>
-            <Tab>Todos</Tab>
-            <Tab>Photos</Tab>
-          </TabList>
-
-          <TabPanel>
-            <Todos />
-          </TabPanel>
-          <TabPanel>
-            <Photos />
-          </TabPanel>
-        </Tabs>
-      </Container>
-    </Section>
+    <div>
+      <Header />
+      <Suspense fallback={<Loader></Loader>}>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          {/* <Route to={'/'} element={<Home />}></Route> */}
+        </Routes>
+      </Suspense>
+    </div>
   );
 };
