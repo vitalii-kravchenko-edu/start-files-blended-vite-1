@@ -1,9 +1,17 @@
-import { Text } from 'components';
+import { Text, Todo } from 'components';
+import { useSelector } from 'react-redux';
+import { selectTodos } from 'reduxTodo/selectors';
 
 export const TodoList = () => {
+  const selectItem = useSelector(selectTodos);
+  console.log(selectItem);
   return (
     <>
-      <Text textAlign="center">We did not find any todo😯</Text>
+      <ul>
+        {selectItem.map((item, idx) => {
+          return <Todo key={item.id} todo={item} counter={idx + 1} />;
+        })}
+      </ul>
     </>
   );
 };

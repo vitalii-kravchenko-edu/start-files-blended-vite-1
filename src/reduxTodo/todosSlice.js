@@ -5,7 +5,7 @@ const todos = createSlice({
   initialState: intState,
   reducers: {
     addTodo: (state, action) => {
-      state.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteTodo: (state, action) => {
       state.items.filter(item => item.id !== action.payload);
