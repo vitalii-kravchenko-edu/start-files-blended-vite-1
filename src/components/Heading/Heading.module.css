@@ -7,6 +7,21 @@
   text-align: center;
 
   position: relative;
+
+  &:after {
+    display: block;
+    content: '';
+
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    transform: translateX(-50%);
+
+    width: 50%;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--color-gray);
+  }
 }
 
 .top {
