@@ -1,12 +1,24 @@
-import { Section, Container, Header, Text, Form, TodoList } from 'components';
+import {
+  Section,
+  Container,
+  Header,
+  Form,
+  TodoList,
+  Filter,
+  EditForm,
+} from 'components';
+import { useSelector } from 'react-redux';
+import { selectCurrentTodo } from 'reduxTodo/selectors';
 
 export const App = () => {
+  const isEdit = useSelector(selectCurrentTodo);
   return (
     <>
       <Header />
       <Section>
         <Container>
-          <Form />
+          {!isEdit ? <Form /> : <EditForm />}
+          <Filter />
           <TodoList />
         </Container>
       </Section>
